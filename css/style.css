@@ -1,0 +1,38 @@
+@import "reset.css";
+@import "main.css";
+
+@font-face {
+    font-family: 'Glametrix';
+    src: url('/font/glametrixlight-webfont.eot');
+    src: url('/font/glametrixlight-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/font/glametrixlight-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Glametrix';
+    src: url('/font/glametrix-webfont.eot');
+    src: url('/font/glametrix-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/font/glametrix-webfont.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Glametrix';
+    src: url('/font/glametrixbold-webfont.eot');
+    src: url('/font/glametrixbold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/font/glametrixbold-webfont.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Yokawerad';
+    src: url('/font/yokawerad-webfont.eot');
+    src: url('/font/yokawerad-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/font/yokawerad-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}

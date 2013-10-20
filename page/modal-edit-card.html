@@ -1,0 +1,45 @@
+<form class="x-modal m-edit">
+    <h1>{{ oModal.action }} {{ oModal.table }}</h1>
+
+    <table class="b-form-layout">
+        <tr>
+            <td colspan="2"><span class="label">Name</span></td>
+            <td><input class="m-required" type="text" d-style-text ng-model="el.name"></td>
+        </tr>
+        <tr>
+            <td colspan="2"><span class="label">Description</span></td>
+            <td><textarea d-style-textarea ng-model="el.desc"></textarea></td>
+        </tr>
+        <tr>
+            <td colspan="2"><span class="label">Template</span></td>
+            <td>
+                <select class="m-required" d-style-select="aTemplates" ng-model="el.id_template">
+                    <option ng-repeat="i in aTemplates" value="{{ i.id }}">{{ i.name }}</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2"><span class="label">Tags</span></td>
+            <td>
+                <select multiple d-style-select="aTags" ng-model="el.aTags">
+                    <option ng-repeat="i in aTags" value="{{ i.id }}">{{ i.name }}</option>
+                </select>
+            </td>
+        </tr>
+
+        <tr ng-hide="el.id_template == null">
+            <td colspan="3"><h2>Data</h2></td>
+        </tr>
+
+        <tr ng-repeat="i in aFields">
+            <td><span class="label">{{ i.name }}</span></td>
+            <td><span class="label m-type">{{ oTypes[i.id_type].name }}</span></td>
+            <td d-bind-template="oFieldTemplate[i.id_type]"></td>
+        </tr>
+    </table>
+
+    <div class="r-buttons">
+        <button ng-click="fnOk($event)" d-validate>OK</button>
+        <button ng-click="fnCancel()">Cancel</button>
+    </div>
+</form>

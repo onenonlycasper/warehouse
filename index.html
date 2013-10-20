@@ -1,0 +1,51 @@
+<!doctype html>
+<html ng-app="warehouse" ng-csp>
+<head>
+    <meta charset="UTF-8">
+    <title>Warehouse</title>
+    <link rel="stylesheet" href="css/style.css"/>
+
+    <script type="text/javascript" src="js/lib/jquery-2.0.2.min.js"></script>
+    <script type="text/javascript" src="js/lib/jquery-ui-1.10.3.custom.min.js"></script>
+    <script type="text/javascript" src="js/lib/jquery.chosen.min.js"></script>
+    <script type="text/javascript" src="js/lib/ydn.db-jquery-0.6.7.js"></script>
+    <script type="text/javascript" src="js/lib/angular.min.js"></script>
+    <script type="text/javascript" src="js/lib/underscore-min.js"></script>
+    <script type="text/javascript" src="js/lib/FileSaver.js"></script>
+
+    <script type="text/javascript" src="js/wh.db.data.js"></script>
+    <script type="text/javascript" src="js/wh.service.js"></script>
+    <script type="text/javascript" src="js/wh.controller.list.js"></script>
+    <script type="text/javascript" src="js/wh.controller.modal.js"></script>
+    <script type="text/javascript" src="js/wh.controller.db.js"></script>
+    <script type="text/javascript" src="js/wh.view.js"></script>
+    <script type="text/javascript" src="js/wh.core.js"></script>
+</head>
+
+<body>
+<div id="c-wrapper">
+
+    <section id="b-main-menu">
+        <menu>
+            <li ng-repeat="i in aMainMenu" ng-class="'active'|fEquals:$index:page">
+                <a href="#{{ i.url }}">{{ i.name }}</a>
+            </li>
+        </menu>
+    </section>
+
+    <section id="b-account" ng-controller="cModalDatabase">
+        <div class="data">
+            <span class="name">Database</span>
+            <ul>
+                <li><a ng-click="fnModalAction($event, 'clear')">Clear</a></li>
+                <li><a ng-click="fnModalAction($event, 'export')">Export</a></li>
+                <li><a ng-click="fnModalAction($event, 'import')">Import</a></li>
+            </ul>
+        </div>
+        <span class="avatar"></span>
+    </section>
+
+    <div id="c-content-wrapper" ng-view ng-animate="{enter:'fx-view-enter'}"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<div id="c-content">
+    <section class="c-block" ng-controller="cModalActions">
+        <h1>Tags</h1>
+
+        <a class="add-item" ng-click="fnModalAction($event, 'add', 'Tag', i.id)">New Tag</a>
+
+        <ul class="b-list" ng-controller="cTagList">
+            <li ng-show="!aTags.length">
+                <div class="item-wrap m-empty">
+                    <span class="name">Empty</span>
+                </div>
+            </li>
+
+            <li ng-repeat="i in aTags">
+                <div class="item-wrap" ng-click="fnOpen($index)">
+                    <span class="name">{{ i.name }}</span>
+                    <span class="desc">{{ i.desc }}</span>
+                    <div class="r-control">
+                        <a class="edit" ng-click="fnModalAction($event, 'edit', 'Tag', i.id)">Edit</a>
+                        <a class="delete" ng-click="fnModalAction($event, 'delete', 'Tag', i.id)" ng-disabled="i.id == 0">Delete</a>
+                    </div>
+                </div>
+
+                <ul class="r-inner-list" ng-show="(i.aCards|fCount) && i.id == idOpen" ng-animate="{show:'fx-show-spoiler', hide:'fx-hide-spoiler'}">
+                    <li ng-repeat="j in i.aCards">
+                        <div class="item-wrap" ng-click="fnModalAction($event, 'show', 'Card', j.id)">
+                            <span class="name">{{ j.name }}</span>
+                            <span class="template">{{ j.template }}</span>
+                            <span class="desc">{{ j.desc }}</span>
+                            <div class="r-control">
+                                <a class="edit" ng-click="fnModalAction($event, 'edit', 'Card', j.id)">Edit</a>
+                                <a class="delete" ng-click="fnModalAction($event, 'delete', 'Card', j.id)">Delete</a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+    </section>
+</div>

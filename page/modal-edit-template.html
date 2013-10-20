@@ -1,0 +1,43 @@
+<form class="x-modal m-edit">
+    <h1>{{ oModal.action }} {{ oModal.table }}</h1>
+
+    <table class="b-form-layout">
+        <tr>
+            <td><span class="label">Name</span></td>
+            <td><input class="m-required" type="text" d-style-text ng-model="el.name"></td>
+        </tr>
+        <tr>
+            <td><span class="label">Description</span></td>
+            <td><textarea d-style-textarea ng-model="el.desc"></textarea></td>
+        </tr>
+    </table>
+
+    <section>
+        <h2>Fields</h2>
+
+        <a class="add-item" ng-click="fnAdd()">New Field</a>
+
+        <table class="b-form-layout m-fields">
+            <tr ng-repeat="i in aFields">
+                <td d-bind-template="oFieldTemplate[i.id_type]"></td>
+                <td>
+                    <select class="m-type" d-style-select="aTypes" ng-model="i.id_type">
+                        <option ng-repeat="j in aTypes" value="{{ j.id }}">{{ j.name }}</option>
+                    </select>
+                </td>
+                <td>
+                    <div class="r-control">
+                        <a class="delete" ng-click="fnDelete($event, $index)" ng-disabled="aFields.length <= 1">Delete</a>
+                        <a class="up" ng-click="fnUp($event, $index)" ng-disabled="$index == 0">Up</a>
+                        <a class="down" ng-click="fnDown($event, $index)" ng-disabled="$index == aFields.length - 1">Down</a>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </section>
+
+    <div class="r-buttons">
+        <button ng-click="fnOk($event)" d-validate>OK</button>
+        <button ng-click="fnCancel()">Cancel</button>
+    </div>
+</form>

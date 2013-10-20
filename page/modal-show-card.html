@@ -1,0 +1,37 @@
+<form class="x-modal m-show">
+    <header>
+        <div class="heading">
+            <span class="template" d-click-select>{{ el.name_template }}</span>
+            <span class="name" d-click-select>{{ el.name }}</span>
+        </div>
+    </header>
+
+    <table class="b-form-layout">
+        <tr class="m-description" ng-class="'m-hide'|fEquals:el.desc:''">
+            <td><span class="label">Description</span></td>
+            <td ng-hide="el.desc == ''"><div class="value" d-click-select>{{ el.desc }}</div></td>
+        </tr>
+
+        <tr class="m-tag-list" ng-class="'m-hide'|fEquals:aTags:[]">
+            <td>Tags</td>
+            <td>
+                <ul class="b-tag-list">
+                    <li ng-repeat="i in aTags" d-click-select>{{ i }}</li>
+                </ul>
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="2"><h2>Data</h2></td>
+        </tr>
+
+        <tr ng-repeat="i in aData" ng-hide="i.value == ''">
+            <td><span class="label">{{ i.name }}</span></td>
+            <td d-bind-template="oFieldTemplate[i.id_type]"></td>
+        </tr>
+    </table>
+
+    <div class="r-buttons">
+        <button ng-click="fnClose()">Close</button>
+    </div>
+</form>

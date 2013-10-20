@@ -1,0 +1,134 @@
+@ff-base: Glametrix, Arial, "Helvetica CY", "Nimbus Sans L", sans-serif;
+@ff-head: Yokawerad, "Times New Roman", "Times CY", "Nimbus Roman No9 L", serif;
+
+@c-base: #262626;
+@c-placeholder: #a9a9a9;
+@c-light0: lighten(@c-base, 20%);
+@c-light1: lighten(@c-light0, 20%);
+@c-light2: @c-placeholder;
+@c-light3: lighten(@c-light2, 10%);
+@c-hover: #00a0f0;
+@bdc-dark: #404040;
+@bdc-light: lighten(@c-hover, 20%);
+@bdc-gray: #e6e6e6;
+@bgc-light0: rgba(0, 160, 240, 0.05);
+@bgc-light1: fade(@bgc-light0, 10%);
+@bgc-light2: fade(@bgc-light0, 15%);
+
+@bg-overlay: url(/img/bg-overlay.png);
+
+@maw-media: 1300px;
+@miw-media: @maw-media - 40px;
+
+.mx-adaptive(@align, @state) when (@align = left) and (@state = 0) {
+    left: 20px;
+    margin-left: 0;
+}
+
+.mx-adaptive(@align, @state) when (@align = left) and (@state = 1) {
+    left: 50%;
+    margin-left: -(@maw-media / 2 - 40px);
+}
+
+.mx-adaptive(@align, @state) when (@align = left) and (@state = 2) {
+    left: 40px;
+    margin-left: 0;
+}
+
+.mx-adaptive(@align, @state) when (@align = right) and (@state = 0) {
+    right: 20px;
+    margin-right: 0;
+}
+
+.mx-adaptive(@align, @state) when (@align = right) and (@state = 1) {
+    right: 50%;
+    margin-right: -(@maw-media / 2 - 40px);
+}
+
+.mx-adaptive(@align, @state) when (@align = right) and (@state = 2) {
+    right: 40px;
+    margin-right: 0;
+}
+
+.mx-transition (@property: all, @duration: 0.3s, @timing: ease, @delay: 0) {
+    -webkit-transition: @property @duration @timing @delay;
+    -moz-transition: @property @duration @timing @delay;
+    -o-transition: @property @duration @timing @delay;
+    transition: @property @duration @timing @delay;
+}
+
+.mx-box-sizing (@value: border-box) {
+    -webkit-box-sizing: @value;
+    -moz-box-sizing: @value;
+    box-sizing: @value;
+}
+
+.mx-border-radius (@value) {
+    -webkit-border-radius: @value;
+    -moz-border-radius: @value;
+    border-radius: @value;
+}
+
+.mx-box-shadow (@value) {
+    -webkit-box-shadow: @value;
+    -moz-box-shadow: @value;
+    box-shadow: @value;
+}
+
+.mx-box-shadow (@value0, @value1) {
+    -webkit-box-shadow: @value0, @value1;
+    -moz-box-shadow: @value0, @value1;
+    box-shadow: @value0, @value1;
+}
+
+.mx-background-gradient (@color0, @color1) {
+    background-color: @color0;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(@color0), to(@color1));
+    background-image: -webkit-linear-gradient(top, @color0, @color1);
+    background-image: -moz-linear-gradient(top, @color0, @color1);
+    background-image: -o-linear-gradient(top, @color0, @color1);
+    background-image: linear-gradient(to bottom, @color0, @color1);
+}
+
+.mx-background-size (@value) {
+    -webkit-background-size: @value;
+    -moz-background-size: @value;
+    -o-background-size: @value;
+    background-size: @value;
+}
+
+.mx-background-origin (@value) {
+    -webkit-background-origin: @value;
+    -moz-background-origin: @value;
+    background-origin: @value;
+}
+
+.mx-transform (@value) {
+    -webkit-transform: @value;
+    -moz-transform: @value;
+    -o-transform: @value;
+    -ms-transform: @value;
+    transform: @value;
+}
+
+.mx-transform-origin (@value) {
+    -webkit-transform-origin: @value;
+    -moz-transform-origin: @value;
+    -o-transform-origin: @value;
+    -ms-transform-origin: @value;
+    transform-origin: @value;
+}
+
+.mx-choice () {
+    background: #fff;
+    padding: 2px 3px 0;
+    height: 16px;
+    line-height: 16px;
+    border: 1px solid @bdc-dark;
+    position: relative;
+    z-index: 0;
+    overflow: hidden;
+    .mx-border-radius(3px);
+    .mx-box-shadow(0 1px 3px rgba(0, 0, 0, 0.15));
+    .mx-transition();
+}

@@ -1,0 +1,20 @@
+<form class="x-modal m-edit">
+    <h1>{{ oModal.action }} {{ oModal.table }}</h1>
+
+    <table class="b-form-layout">
+        <tr>
+            <td><span class="label">Name</span></td>
+            <td><input class="m-required" type="text" d-style-text ng-model="el.name"></td>
+        </tr>
+
+        <tr>
+            <td><span class="label">Description</span></td>
+            <td><textarea d-style-textarea ng-model="el.desc"></textarea></td>
+        </tr>
+    </table>
+
+    <div class="r-buttons">
+        <button ng-click="fnOk($event)" d-validate>OK</button>
+        <button ng-click="fnCancel()">Cancel</button>
+    </div>
+</form>

@@ -1,0 +1,43 @@
+<div id="c-content">
+    <section class="c-block" ng-controller="cModalActions">
+        <h1>Templates</h1>
+
+        <a class="add-item" ng-click="fnModalAction($event, 'add', 'Template', i.id)">New Template</a>
+
+        <ul class="b-list" ng-controller="cTemplateList">
+            <li ng-show="!aTemplates.length">
+                <div class="item-wrap m-empty">
+                    <span class="name">Empty</span>
+                </div>
+            </li>
+
+            <li ng-repeat="i in aTemplates">
+                <div class="item-wrap" ng-click="fnOpen($index)">
+                    <span class="name">{{ i.name }}</span>
+                    <span class="desc">{{ i.desc }}</span>
+                    <div class="r-control">
+                        <a class="edit" ng-click="fnModalAction($event, 'edit', 'Template', i.id)">Edit</a>
+                        <a class="delete" ng-click="fnModalAction($event, 'delete', 'Template', i.id)">Delete</a>
+                    </div>
+                </div>
+
+                <ul class="r-inner-list" ng-show="(i.aCards|fCount) && i.id == idOpen" ng-animate="{show:'fx-show-spoiler', hide:'fx-hide-spoiler'}">
+                    <li ng-repeat="j in i.aCards">
+                        <div class="item-wrap" ng-click="fnModalAction($event, 'show', 'Card', j.id)">
+                            <span class="name">{{ j.name }}</span>
+                            <ul class="b-tag-list" ng-show="j.aTags|fCount">
+                                <li ng-repeat="k in j.aTags">{{ k.name }}</li>
+                            </ul>
+                            <span class="desc">{{ j.desc }}</span>
+                            <div class="r-control">
+                                <a class="edit" ng-click="fnModalAction($event, 'edit', 'Card', j.id)">Edit</a>
+                                <a class="delete" ng-click="fnModalAction($event, 'delete', 'Card', j.id)">Delete</a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+    </section>
+</div>

@@ -1,0 +1,78 @@
+<div id="c-content">
+    <form class="c-block m-filter">
+        <h1>Filter</h1>
+
+        <table class="b-form-layout" ng-controller="cCardFilter" ng-keyup="fnKeyUp($event)">
+            <tr>
+                <td><span class="label">Card</span></td>
+                <td><input type="text" d-style-text ng-model="oData.card" placeholder="Part of card name or description"></td>
+            </tr>
+
+            <tr>
+                <td><span class="label">Templates</span></td>
+                <td>
+                    <select multiple d-style-select="aTemplates" ng-model="oData.aTemplates" data-placeholder="Uses a logical OR">
+                        <option ng-repeat="i in aTemplates" value="{{ i.id }}">{{ i.name }}</option>
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td><span class="label">Tags</span></td>
+                <td>
+                    <select multiple d-style-select="aTags" ng-model="oData.aTags" data-placeholder="Uses a logical AND">
+                        <option ng-repeat="i in aTags" value="{{ i.id }}">{{ i.name }}</option>
+                    </select>
+                </td>
+            </tr>
+
+            <tr class="m-buttons">
+                <td colspan="2">
+                    <button ng-click="fnApply()">Apply</button>
+                    <button ng-click="fnCancel()">Cancel</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+
+    <section class="c-block m-card-list" ng-controller="cModalActions">
+        <h1>Cards</h1>
+
+        <a class="add-item" ng-click="fnModalAction($event, 'add', 'Card', i.id)">New Card</a>
+
+        <ul class="b-list" ng-controller="cCardList">
+            <li ng-show="!aTemplates.length">
+                <div class="item-wrap m-empty">
+                    <span class="name">Empty</span>
+                </div>
+            </li>
+
+            <li ng-repeat="i in aTemplates">
+                <div class="item-wrap">
+                    <span class="name">{{ i.name }}</span>
+                    <span class="desc">{{ i.desc }}</span>
+                    <div class="r-control">
+                        <a class="edit" ng-click="fnModalAction($event, 'edit', 'Template', i.id)">Edit</a>
+                        <a class="delete" ng-click="fnModalAction($event, 'delete', 'Template', i.id)">Delete</a>
+                    </div>
+                </div>
+
+                <ul class="r-inner-list" ng-animate="{show:'fx-show-spoiler', hide:'fx-hide-spoiler'}">
+                    <li ng-repeat="j in i.aCards">
+                        <div class="item-wrap" ng-click="fnModalAction($event, 'show', 'Card', j.id)">
+                            <span class="name">{{ j.name }}</span>
+                            <ul class="b-tag-list" ng-show="j.aTags|fCount">
+                                <li ng-repeat="k in j.aTags">{{ k.name }}</li>
+                            </ul>
+                            <span class="desc">{{ j.desc }}</span>
+                            <div class="r-control">
+                                <a class="edit" ng-click="fnModalAction($event, 'edit', 'Card', j.id)">Edit</a>
+                                <a class="delete" ng-click="fnModalAction($event, 'delete', 'Card', j.id)">Delete</a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+</div>
